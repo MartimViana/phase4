@@ -1,4 +1,4 @@
-const { create, getAll, getByDate_of_Transfer } = require('./transaction.service')
+const { create, getAll, getByDate_of_Transfer, changeTransactionByTransactionUniqueModifier } = require('./transaction.service')
 
 module.exports = {
 	createTransaction: (req, res) => {
@@ -18,6 +18,38 @@ module.exports = {
 	getByDate_of_Transfer: (req, res) => {
 		const id = req.params.id
 		getByDate_of_Transfer(id, (err, results) => {
+			if (err) {
+				console.log(err);
+				return;
+			}
+			if(!results) {
+				return res.json({
+					message: "Transaction not found."
+				})
+			}
+			return res.json({
+				data: results
+			})
+		})
+	},
+	getAllTransactions: (req, res) => {
+		getAll((err, results) => {
+			if (err) {
+				console.log(err);
+				return;
+			}
+			if(!results) {
+				return res.json({
+					message: "Transaction not found."
+				})
+			}
+			return res.json({
+				data: results
+			})
+		})
+	},
+	changeTransactionByTransaction_unique_identifier: (req, res) => {
+		changeTransactionByTransactionUniqueModifier(req.body, (err, results) => {
 			if (err) {
 				console.log(err);
 				return;

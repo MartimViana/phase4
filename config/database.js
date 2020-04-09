@@ -2,13 +2,12 @@ const { createPool } = require('mysql')
 
 const pool = createPool({
 	port: 3306,
-	host: 'localhost',
+	host: '35.240.51.198',
 	//user: process.env.DB_USER,
-	user: 'root',
+	user: 'sampleuser',
 	//password: process.env.DB_PASSWORD,
-	password: 'root',
+	password: 'sampleuser',
 	database: 'uk_house_pricing',
 	connectionLimit: 10
 })
-
 module.exports = pool
