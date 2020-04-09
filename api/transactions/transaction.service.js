@@ -26,25 +26,25 @@ module.exports = {
 
 		)
 	},
-	getTransactions: callback => {
+	getAll: callback => {
 		pool.query(`select * from transaction;`,
 		[],
 		(error, results, fields) => {
 			if (error) {
-				return callback(error)
+				callback(error)
 			}
 			return callback(null, results)
 		}
 		)
 	},
-	getTransactionByDate_of_Transfer: (data, callback) => {
-		pool.query(`select * from transaction where Date_of_Transfer=?;`,
+	getByDate_of_Transfer: (date_of_transfer, callback) => {
+		pool.query(`select * from transaction where Date_of_Transfer = ?;`,
 		[
-			data.Date_of_Transfer
+			date_of_transfer
 		],
 		(error, results, fields) => {
 			if (error) {
-				return callback(error)
+				callback(error)
 			}
 			return callback(null, results)
 		}
