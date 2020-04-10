@@ -1,6 +1,6 @@
 FROM node:10
 
-# Create app directory
+# define as workstation app directory
 WORKDIR /usr/src/app
 
 # Install app dependencies
