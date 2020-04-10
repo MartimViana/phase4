@@ -1,6 +1,6 @@
 FROM node:10
 
-# define as workstation app directory
+# Create app directory
 WORKDIR /usr/src/app
 
 # Install app dependencies
@@ -16,4 +16,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 8080
-CMD [ "npm", "start" ]
+CMD [ "node", "app.js" ]
